@@ -20,13 +20,9 @@ jobs:
     - name: Build for Windows/64
       run: env GOOS=windows GOARCH=amd64 go build -v -o release/oddlysatisfying.exe ./...
 
-  upload:
-    name: Create release-artifacts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload the artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: 'release/oddly*'
+    - name: Upload the artifacts
+      uses: skx/github-action-publish-binaries@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: 'release/oddly*'
