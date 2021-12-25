@@ -1,16 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
 
 func download() {
 	log := New(WithMode(mode_logrus))
-	filenames := data["filenames"].([]string)
-	extensions := data["extensions"].([]string)
-	program := fmt.Sprintf("%s%s", filenames[rand.Intn(len(filenames))], extensions[rand.Intn(len(extensions))])
+	program := getFilename()
 	size := rand.Intn(1000000)
 	log.Infof("attempt to download file [%s] of %v bytes", program, size)
 	log.Debug("opening connection...")

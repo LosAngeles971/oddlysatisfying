@@ -16,6 +16,7 @@ var vtp = map[int]uselessFunc{
 	2: bootVax,
 	3: c64,
 	4: adminports,
+	5: fsck,
 }
 
 var clo = map[int]uselessFunc{
