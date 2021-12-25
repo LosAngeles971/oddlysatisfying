@@ -17,7 +17,17 @@ And you may contribute to this project providing ideas, nice log examples and co
 To download the superb and useless _oddlysatisfying_ program click on the release tags and then choose the last (or wathever you want) release.
 Chosen the release, you may download the right binary for your machine.
 
+If you're lazy, then just launch the _oddlysatisfying_ program.
+Otherwise, you may launch  _oddlysatisfying_ program specifying a number, the latter will be used to randomly generate the number of programs to be executed.
+
+Anyway remember! Even if you see attempt to download something, recovery actions, boot of programs, **the superb _oddlysatisfying_ program never really do something**.
+The superb _oddlysatisfying_ program is and will be always completely useless and harmless.
+
+
 Enjoy!
+Peace and love, LosAngeles971.
+
+## Few words more...
 
 At the date, the superb _oddlysatisfying_ program supports the following architectures:
 
