@@ -3,8 +3,6 @@ package main
 import (
 	"math/rand"
 	"time"
-
-	log "github.com/sirupsen/logrus"
 )
 
 type uselessFunc func()
@@ -12,6 +10,9 @@ type uselessFunc func()
 var vtp = map[int]uselessFunc{
 	0: download,
 	1: mvs,
+	2: bootVax,
+	3: c64,
+	4: adminports,
 }
 
 var clo = map[int]uselessFunc{
@@ -20,8 +21,7 @@ var clo = map[int]uselessFunc{
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
-	calls := rand.Intn(20)
-	log.Infof("batch size is %v", calls)
+	calls := rand.Intn(5)
 	for i := 0; i < calls; i++ {
 		call := vtp[rand.Intn(len(vtp))]
 		call()

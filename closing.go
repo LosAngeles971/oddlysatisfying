@@ -1,9 +1,11 @@
 package main
 
 func standard() {
-	log := New(WithDelay(3))
-	log.Info("all connections closed")
-	log.Info("memory freed")
-	log.Info("temporary files removed")
-	log.Info("build successfull")
+	log := New()
+	log.Info("used connections closed")
+	log.Info("used memory freed")
+	log.Info("used temporary files removed")
+	log.Info("******************************************")
+	log.Info("*          BUILD SUCCESSFULL             *")
+	log.Info("******************************************")
 }
