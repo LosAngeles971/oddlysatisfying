@@ -11,8 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
@@ -23,4 +21,7 @@ jobs:
 
     - name: Build for Windows/64
       run: env GOOS=windows GOARCH=amd64 go build -v -o release/oddlysatisfying.exe ./... 
+
+    - name: Test
+      run: release/oddlysatisfying
       
