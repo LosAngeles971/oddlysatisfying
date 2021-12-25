@@ -24,6 +24,9 @@ jobs:
     - name: Build for Windows/64
       run: env GOOS=windows GOARCH=amd64 go build -v -o release/oddlysatisfying.exe ./... 
 
+    - name: Build for Darwin/64
+      run: env GOOS=darwin GOARCH=amd64 go build -v -o release/oddlysatisfying.mac ./... 
+
     - name: Test
       run: release/oddlysatisfying
       

@@ -13,3 +13,16 @@ The _oddlysatisfying_ program randomly choose vintage and modern operations, typ
 For the best effect, you may have two monitor and use the far one for your boring and stressful activity amd the close one to run the _oddlysatisfying_ program.
 
 And you may contribute to this project providing ideas, nice log examples and code, in order to keep _oddlysatisfying_ program completely useless but oddly satysfying and relaxing.
+
+To download the superb and useless _oddlysatisfying_ program click on the release tags and then choose the last (or wathever you want) release.
+Chosen the release, you may download the right binary for your machine.
+
+Enjoy!
+
+At the date, the superb _oddlysatisfying_ program supports the following architectures:
+
+* Linux/amd64
+* Windows/amd64
+* Darwin/amd64
+
+But you asks and (maybe) you'll be satisfied.
