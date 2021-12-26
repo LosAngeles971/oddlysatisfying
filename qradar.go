@@ -1,5 +1,9 @@
 package main
 
+import (
+	"time"
+)
+
 func qradarAutoupdate() {
 	log := New()
 	log.Info("AUTOUPDATE - [DEVEL] Signature verification passed!")
@@ -8,7 +12,7 @@ func qradarAutoupdate() {
 	log.Info("AUTOUPDATE - [INFO] Manifest type is DAU")
 	log.Info("AUTOUPDATE - [DEVEL] Myver has already been initialized")
 	log.Info("AUTOUPDATE - [DEVEL] Checking \"QRadar\" against \"QRadar\"")
-	log.Info("AUTOUPDATE - [INFO] Installing DAU with serial 1640462743 from 12/25/2021 at 21:05.  Previous DAU was 1640376370 from 12/24/2021 at 21:06")
+	log.Infof("AUTOUPDATE - [INFO] Installing DAU with serial 1640462743 from %s at 12:00.  Previous DAU was 1640376370 from 12/24/2021 at 21:06", time.Now().Format("12/24/2021"))
 	log.Info("AUTOUPDATE - [INFO] Local version of last successful update 7.4.2")
 	log.Info("AUTOUPDATE - [INFO] Local version of current software 7.4.2")
 	log.Info("AUTOUPDATE - [INFO] Obsoleting DAU file Cmd:  /bin/rm -f /store/configservices/deployed/globalconfig//QVM-Autoupdate-SQL-All-742-2021.12.24.x86_64.rpm")
