@@ -1,4 +1,4 @@
-# Oddly satisfying usell build script
+# Oddly satisfying useless build script
 
 Hi all!
 
