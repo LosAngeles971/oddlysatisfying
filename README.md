@@ -1,4 +1,4 @@
-# Oddly satisfying usell build script
+# Useless but oddly satisfying program to build nothing!
 
 Hi all!
 
@@ -35,6 +35,22 @@ The program is really simple:
 * _linux.go_ -> provides _logging func_ related to the world of linux computers
 * _network.go_ -> provides _logging func_ related to the world of network devices and actions
 * _pc.go_ -> provides _logging func_ related to the world of personal computers
+
+Last but not least, when you add a new _logging func_, you need to update the _vtp_ map into main.go: 
+
+```golang
+var vtp = map[int]uselessFunc{
+	0: download,
+	1: mvs,
+	2: bootVax,
+	3: c64,
+	4: adminports,
+	5: fsck,
+	6: bootMsDos,
+	7: stateLinux,
+	8: qradarAutoupdate,
+}
+```
 
 If you would add a new _logging func_, you just need to chose an existing file or creating a new one, and populate it with new code.
 
