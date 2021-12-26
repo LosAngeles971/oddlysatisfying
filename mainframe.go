@@ -90,14 +90,3 @@ func bootVax() {
 	log.Info("")
 	log.Info("      Welcome to VAX/VMS V5.3")
 }
-
-func c64() {
-	log := New(WithDelay(500, true))
-	log.Info("    **** COMMODORE 64 BASIC X2 ****")
-	log.Info(" 64K RAM SYSTEM 38911 BASIC BYTES FREE")
-	log.Info("READY")
-	log.Info("LOAD\"*\",8,1")
-	log.Info("SEARCHING FOR *")
-	log.Info("LOADING FROM 0801 (2049) TO (7786)")
-	log.Info("READY")
-}
