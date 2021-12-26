@@ -15,5 +15,4 @@ func pfSenseMenu() {
 	log.Info("6) Halt system                       15) Restore recent configuration")
 	log.Info("7) Ping host                         16) Restart PHP-FPM")
 	log.Info("8) Shell")
-
 }

@@ -64,11 +64,11 @@ func (c Console) out(l int, args ...interface{}) {
 	case mode_logrus:
 		switch l {
 		case level_debug:
-			logrus.Debug(args)
+			logrus.Debug(args...)
 		case level_error:
-			logrus.Error(args)
+			logrus.Error(args...)
 		default:
-			logrus.Info(args)
+			logrus.Info(args...)
 		}
 	default:
 		fmt.Println(args...)
