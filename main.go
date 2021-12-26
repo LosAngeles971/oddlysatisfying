@@ -20,6 +20,7 @@ var vtp = map[int]uselessFunc{
 	6: bootMsDos,
 	7: stateLinux,
 	8: qradarAutoupdate,
+	9: vm370,
 }
 
 var clo = map[int]uselessFunc{
@@ -27,7 +28,7 @@ var clo = map[int]uselessFunc{
 }
 
 func main() {
-    args := os.Args[1:]
+	args := os.Args[1:]
 	rand.Seed(time.Now().UnixNano())
 	calls := rand.Intn(10)
 	if len(args) > 0 {

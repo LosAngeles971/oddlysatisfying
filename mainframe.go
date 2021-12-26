@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"time"
 )
 
@@ -10,20 +11,69 @@ func mvs() {
 	log.Info("STC18213 00000090 $HASP373 BPXAS STARTED")
 	log.Info("STC18213 80000010 IEF403I BPXAS - STARTED - TIME=13.36.36 - ASID=001F - SC53")
 	log.Info("STC16316 00000291 IST663I IPS SRQ REQUEST FROM ISTAPNCP FAILED, SENSE=08570002")
-    log.Info(" 	111 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 REAL DLU=USIBMSC.S48TO")
-    log.Info(" 	111 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	111 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
-    log.Info("  111 00000291 IST314I END")
+	log.Info(" 	111 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 REAL DLU=USIBMSC.S48TO")
+	log.Info(" 	111 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	111 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
+	log.Info("  111 00000291 IST314I END")
 	log.Info("STC16352 00000291 IST663I IPS SRQ REQUEST FROM ISTAPNCP FAILED, SENSE=087D0001")
-    log.Info(" 	883 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
-    log.Info(" 	883 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	883 00000291 IST314I END")
+	log.Info(" 	883 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
+	log.Info(" 	883 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	883 00000291 IST314I END")
 	log.Info("STC28215 00000291 IST663I IPS SRQ REQUEST TO ISTAPNCP FAILED, SENSE=08570002 86")
 	log.Info(" 	864 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
-    log.Info(" 	864 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	864 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
-    log.Info(" 	864 00000291 IST891I USIBMSC.SC48M GENERATED FAILURE NOTIFICATION")
-    log.Info(" 	864 00000291 IST314I END")
+	log.Info(" 	864 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	864 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
+	log.Info(" 	864 00000291 IST891I USIBMSC.SC48M GENERATED FAILURE NOTIFICATION")
+	log.Info(" 	864 00000291 IST314I END")
+}
+
+func vm370() {
+	log := New(WithDelay(60, true))
+
+	logWithTS := func(msg string) {
+		hh, mm, ss := time.Now().Clock()
+		log.Infof("%02d:%02d:%02d %s", hh, mm, ss, msg)
+	}
+
+	log.Info("VM/370 Community Edition Version  1 Release  1.1 05/02/21 12:49:03")
+	log.Info("")
+	// This message is a majestic pain in the neck...
+	now := time.Now()
+	hh, mm, ss := now.Clock()
+	y, m, d := now.Date()
+	wd := strings.ToUpper(now.Weekday().String())
+	tz, _ := now.Zone()
+	log.Infof("Now %02d:%02d:%02d %s %s %02d/%02d/%02d", hh, mm, ss, tz, wd, m, d, y-2000)
+	log.Info("")
+	log.Info("DMKCPI971I System is Uniprocessor generated")
+	log.Info("DMKCPI977I Free Trap Installed")
+	log.Info("")
+	log.Info("DMKUDR476I System Directory loaded from volume VM50-1")
+	log.Info("")
+	logWithTS("AUTO LOGON   ***   OPERATOR USERS = 001  BY  SYSTEM")
+	log.Info("")
+	log.Info("DMKCPI957I Storage size = 16384 K,   Nucleus = 336 K,")
+	log.Info("           Dynamic Paging = 14788 K, Trace Table = 240 K,")
+	log.Info("           Free Storage = 1020 K,    Virtual=Real = 00000 K")
+	log.Info("")
+	logWithTS("FILES: 001 RDR,  NO PRT,  NO PUN")
+	logWithTS("AUTO LOGON   ***   AUTOLOG1 USERS = 002  BY  OPERATOR")
+	log.Info("")
+	log.Info("DMKCPI966I Initialization complete")
+	log.Info("")
+	logWithTS("AUTO LOGON   ***   CPWATCH  USERS = 003  BY  AUTOLOG1")
+	logWithTS("RDR  00C DRAINED   SYSTEM")
+	logWithTS("PUN  00D DRAINED   SYSTEM   CLASS = P      SEP")
+	logWithTS("PRT  00E DRAINED   SYSTEM   CLASS = A      SEP")
+	logWithTS("PRT  00F DRAINED   SYSTEM   CLASS = A      SEP")
+	logWithTS("AUTO LOGON   ***   CMSBATCH USERS = 004  BY  AUTOLOG1")
+	logWithTS("AUTO LOGON   ***   WAKEUP   USERS = 005  BY  AUTOLOG1")
+	logWithTS(" WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
+	logWithTS("USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
+	logWithTS("RDR  00C STARTED   SYSTEM")
+	logWithTS("PUN  00D STARTED   SYSTEM   CLASS = P      SEP")
+	logWithTS("PRT  00E STARTED   SYSTEM   CLASS = A      SEP")
+	logWithTS("PRT  00F STARTED   SYSTEM   CLASS = A      SEP")
 }
 
 func bootVax() {
