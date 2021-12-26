@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+const (
+	VM370_DATETIME_FMT = "15:04:05 MST Monday 01/02/06"
+	VM370_TIME_FMT     = "15:04:05"
+)
+
 func mvs() {
 	log := New(WithDelay(200, true))
 	log.Info("STC18213 00000090 $HASP100 BPXAS ON STCINRDR")
@@ -29,51 +34,41 @@ func mvs() {
 
 func vm370() {
 	log := New(WithDelay(60, true))
-
-	logWithTS := func(msg string) {
-		hh, mm, ss := time.Now().Clock()
-		log.Infof("%02d:%02d:%02d %s", hh, mm, ss, msg)
-	}
-
 	log.Info("VM/370 Community Edition Version  1 Release  1.1 05/02/21 12:49:03")
 	log.Info("")
-	// This message is a majestic pain in the neck...
-	now := time.Now()
-	hh, mm, ss := now.Clock()
-	y, m, d := now.Date()
-	wd := strings.ToUpper(now.Weekday().String())
-	tz, _ := now.Zone()
-	log.Infof("Now %02d:%02d:%02d %s %s %02d/%02d/%02d", hh, mm, ss, tz, wd, m, d, y-2000)
+	log.Info("Now", strings.ToUpper(time.Now().Format(VM370_DATETIME_FMT)))
 	log.Info("")
 	log.Info("DMKCPI971I System is Uniprocessor generated")
 	log.Info("DMKCPI977I Free Trap Installed")
 	log.Info("")
 	log.Info("DMKUDR476I System Directory loaded from volume VM50-1")
 	log.Info("")
-	logWithTS("AUTO LOGON   ***   OPERATOR USERS = 001  BY  SYSTEM")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   OPERATOR USERS = 001  BY  SYSTEM")
 	log.Info("")
-	log.Info("DMKCPI957I Storage size = 16384 K,   Nucleus = 336 K,")
-	log.Info("           Dynamic Paging = 14788 K, Trace Table = 240 K,")
-	log.Info("           Free Storage = 1020 K,    Virtual=Real = 00000 K")
+	// Emit DMKCPI957I as a single multi-line message without delay, we're not emulating a 3215 - yet :-)
+	log.Infof("%s\n%s\n%s",
+		"DMKCPI957I Storage size = 16384 K,   Nucleus = 336 K,",
+		"           Dynamic Paging = 14788 K, Trace Table = 240 K,",
+		"           Free Storage = 1020 K,    Virtual=Real = 00000 K")
 	log.Info("")
-	logWithTS("FILES: 001 RDR,  NO PRT,  NO PUN")
-	logWithTS("AUTO LOGON   ***   AUTOLOG1 USERS = 002  BY  OPERATOR")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "FILES: 001 RDR,  NO PRT,  NO PUN")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   AUTOLOG1 USERS = 002  BY  OPERATOR")
 	log.Info("")
 	log.Info("DMKCPI966I Initialization complete")
 	log.Info("")
-	logWithTS("AUTO LOGON   ***   CPWATCH  USERS = 003  BY  AUTOLOG1")
-	logWithTS("RDR  00C DRAINED   SYSTEM")
-	logWithTS("PUN  00D DRAINED   SYSTEM   CLASS = P      SEP")
-	logWithTS("PRT  00E DRAINED   SYSTEM   CLASS = A      SEP")
-	logWithTS("PRT  00F DRAINED   SYSTEM   CLASS = A      SEP")
-	logWithTS("AUTO LOGON   ***   CMSBATCH USERS = 004  BY  AUTOLOG1")
-	logWithTS("AUTO LOGON   ***   WAKEUP   USERS = 005  BY  AUTOLOG1")
-	logWithTS(" WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
-	logWithTS("USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
-	logWithTS("RDR  00C STARTED   SYSTEM")
-	logWithTS("PUN  00D STARTED   SYSTEM   CLASS = P      SEP")
-	logWithTS("PRT  00E STARTED   SYSTEM   CLASS = A      SEP")
-	logWithTS("PRT  00F STARTED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   CPWATCH  USERS = 003  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "RDR  00C DRAINED   SYSTEM")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PUN  00D DRAINED   SYSTEM   CLASS = P      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00E DRAINED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F DRAINED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   CMSBATCH USERS = 004  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   WAKEUP   USERS = 005  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), " WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "RDR  00C STARTED   SYSTEM")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PUN  00D STARTED   SYSTEM   CLASS = P      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00E STARTED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F STARTED   SYSTEM   CLASS = A      SEP")
 }
 
 func bootVax() {
