@@ -63,12 +63,12 @@ func vm370() {
 	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F DRAINED   SYSTEM   CLASS = A      SEP")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   CMSBATCH USERS = 004  BY  AUTOLOG1")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   WAKEUP   USERS = 005  BY  AUTOLOG1")
-	log.Info(time.Now().Format(VM370_TIME_FMT), " WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
-	log.Info(time.Now().Format(VM370_TIME_FMT), "USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "RDR  00C STARTED   SYSTEM")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "PUN  00D STARTED   SYSTEM   CLASS = P      SEP")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00E STARTED   SYSTEM   CLASS = A      SEP")
 	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F STARTED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), " WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
 }
 
 func bootVax() {
