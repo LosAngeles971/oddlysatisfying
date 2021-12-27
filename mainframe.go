@@ -1,7 +1,13 @@
 package main
 
 import (
+	"strings"
 	"time"
+)
+
+const (
+	VM370_DATETIME_FMT = "15:04:05 MST Monday 01/02/06"
+	VM370_TIME_FMT     = "15:04:05"
 )
 
 func mvs() {
@@ -10,20 +16,59 @@ func mvs() {
 	log.Info("STC18213 00000090 $HASP373 BPXAS STARTED")
 	log.Info("STC18213 80000010 IEF403I BPXAS - STARTED - TIME=13.36.36 - ASID=001F - SC53")
 	log.Info("STC16316 00000291 IST663I IPS SRQ REQUEST FROM ISTAPNCP FAILED, SENSE=08570002")
-    log.Info(" 	111 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 REAL DLU=USIBMSC.S48TO")
-    log.Info(" 	111 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	111 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
-    log.Info("  111 00000291 IST314I END")
+	log.Info(" 	111 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 REAL DLU=USIBMSC.S48TO")
+	log.Info(" 	111 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	111 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
+	log.Info("  111 00000291 IST314I END")
 	log.Info("STC16352 00000291 IST663I IPS SRQ REQUEST FROM ISTAPNCP FAILED, SENSE=087D0001")
-    log.Info(" 	883 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
-    log.Info(" 	883 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	883 00000291 IST314I END")
+	log.Info(" 	883 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
+	log.Info(" 	883 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	883 00000291 IST314I END")
 	log.Info("STC28215 00000291 IST663I IPS SRQ REQUEST TO ISTAPNCP FAILED, SENSE=08570002 86")
 	log.Info(" 	864 00000291 IST664I REAL OLU=USIBMSC.S52TOS48 ALIAS DLU=USIBMSC.S48TO")
-    log.Info(" 	864 00000291 IST889I SID = ED0385CAAEEAAF28")
-    log.Info(" 	864 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
-    log.Info(" 	864 00000291 IST891I USIBMSC.SC48M GENERATED FAILURE NOTIFICATION")
-    log.Info(" 	864 00000291 IST314I END")
+	log.Info(" 	864 00000291 IST889I SID = ED0385CAAEEAAF28")
+	log.Info(" 	864 00000291 IST264I REQUIRED RESOURCE S48TOS52 NOT ACTIVE")
+	log.Info(" 	864 00000291 IST891I USIBMSC.SC48M GENERATED FAILURE NOTIFICATION")
+	log.Info(" 	864 00000291 IST314I END")
+}
+
+func vm370() {
+	log := New(WithDelay(60, true))
+	log.Info("VM/370 Community Edition Version  1 Release  1.1 05/02/21 12:49:03")
+	log.Info("")
+	log.Info("Now", strings.ToUpper(time.Now().Format(VM370_DATETIME_FMT)))
+	log.Info("")
+	log.Info("DMKCPI971I System is Uniprocessor generated")
+	log.Info("DMKCPI977I Free Trap Installed")
+	log.Info("")
+	log.Info("DMKUDR476I System Directory loaded from volume VM50-1")
+	log.Info("")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   OPERATOR USERS = 001  BY  SYSTEM")
+	log.Info("")
+	// Emit DMKCPI957I as a single multi-line message without delay, we're not emulating a 3215 - yet :-)
+	log.Infof("%s\n%s\n%s",
+		"DMKCPI957I Storage size = 16384 K,   Nucleus = 336 K,",
+		"           Dynamic Paging = 14788 K, Trace Table = 240 K,",
+		"           Free Storage = 1020 K,    Virtual=Real = 00000 K")
+	log.Info("")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "FILES: 001 RDR,  NO PRT,  NO PUN")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   AUTOLOG1 USERS = 002  BY  OPERATOR")
+	log.Info("")
+	log.Info("DMKCPI966I Initialization complete")
+	log.Info("")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   CPWATCH  USERS = 003  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "RDR  00C DRAINED   SYSTEM")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PUN  00D DRAINED   SYSTEM   CLASS = P      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00E DRAINED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F DRAINED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   CMSBATCH USERS = 004  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "AUTO LOGON   ***   WAKEUP   USERS = 005  BY  AUTOLOG1")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "RDR  00C STARTED   SYSTEM")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PUN  00D STARTED   SYSTEM   CLASS = P      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00E STARTED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "PRT  00F STARTED   SYSTEM   CLASS = A      SEP")
+	log.Info(time.Now().Format(VM370_TIME_FMT), " WNG FROM AUTOLOG1:  AUTOLOG1 DONE - LOGGING OFF")
+	log.Info(time.Now().Format(VM370_TIME_FMT), "USER DSC LOGOFF AS AUTOLOG1 USERS = 004")
 }
 
 func bootVax() {
