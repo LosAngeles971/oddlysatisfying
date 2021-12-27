@@ -1,7 +1,10 @@
 package main
 
 func pfSenseMenu() {
-	log := New()
+	log := New(WithDelay(750,true))
+	log.Info("==============================================================================")
+	log.Info("                            pfSense Menu                                      ")
+	log.Info("==============================================================================")
 	log.Info("WAN (wan)       -> vmx0       -> v4/DHCP4: 198.51.100.6/24")
 	log.Info("                                 v6/DHCP6: 2001:db8::20c:29ff:fe78:6e4e/64")
 	log.Info("LAN (lan)       -> vmx1       -> v4: 10.6.0.1/24")

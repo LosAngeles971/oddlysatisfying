@@ -51,6 +51,7 @@ var vtp = map[int]uselessFunc{
 	6: bootMsDos,
 	7: stateLinux,
 	8: qradarAutoupdate,
+	9: pfSenseMenu,
 }
 ```
 
