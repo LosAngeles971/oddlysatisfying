@@ -20,16 +20,33 @@ var vtp = map[int]uselessFunc{
 	6: bootMsDos,
 	7: stateLinux,
 	8: qradarAutoupdate,
+	9: pfSenseMenu,
 }
 
 var clo = map[int]uselessFunc{
 	0: standard,
 }
 
+func Find(slice []int, val int) (int, bool) {
+    for i, item := range slice {
+        if item == val {
+            return i, true
+        }
+    }
+    return -1, false
+}
+
+func Max(x, y int) int {
+    if x < y {
+        return y
+    }
+    return x
+}
+
 func main() {
     args := os.Args[1:]
 	rand.Seed(time.Now().UnixNano())
-	calls := rand.Intn(10)
+	calls := rand.Intn(len(vtp))
 	if len(args) > 0 {
 		c, err := strconv.Atoi(args[0])
 		if err != nil {
@@ -37,14 +54,35 @@ func main() {
 			fmt.Printf("but what you type is not a number [%v]\n", args[0])
 			fmt.Printf("so you will have the default for now :)\n")
 		} else {
-			calls = rand.Intn(c)
+			calls = rand.Intn(Max(c, len(vtp)))
 		}
 	}
 	fmt.Printf("here we go!  [%v]\n\n\n\n\n", calls)
-	for i := 0; i < calls; i++ {
-		call := vtp[rand.Intn(len(vtp))]
+	
+	// Create the list
+	myList := make([]int,0)
+	
+	// if single call
+	if calls == 0 {
+		randomNumber := rand.Intn(len(vtp))
+		myList = append(myList, randomNumber)
+	} else {
+		for i := 0; i < calls; {
+			randomNumber := rand.Intn(len(vtp))
+			_, found := Find(myList, randomNumber)
+			if !found {
+				myList = append(myList, randomNumber)
+				i++
+			}
+		}
+	}
+	
+	for i := 0; i < len(myList); i++ {
+		call := vtp[myList[i]]
 		call()
 	}
+
 	call := clo[rand.Intn(len(clo))]
 	call()
 }
+

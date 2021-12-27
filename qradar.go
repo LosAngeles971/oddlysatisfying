@@ -5,7 +5,7 @@ import (
 )
 
 func qradarAutoupdate() {
-	log := New()
+	log := New(WithDelay(250, true))
 	log.Info("AUTOUPDATE - [DEVEL] Signature verification passed!")
 	log.Info("AUTOUPDATE - [INFO] Version: 9.12")
 	log.Info("AUTOUPDATE - [INFO] Supplied Version: 9.12")
