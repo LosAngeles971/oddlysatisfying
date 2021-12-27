@@ -49,3 +49,47 @@ func adminports() {
 	}	
 }
 
+func ciscoboot() {
+	log := New()
+	log.Debugf("Launching IOS image at 0x80008000...")
+	log.Debugf("6 Ethernet interfaces")
+	log.Debugf("2 Gigabit Ethernet interface")
+	log.Debugf("")
+	log.Debugf("999K bytes of NVRAM.")
+	log.Debugf("")
+	log.Debugf("8192K bytes of Flash internal SIMM (Sector size 256K).Installed image archive")
+	log.Debugf("")
+	log.Debugf("Press RETURN to get started!")
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet2/0, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet2/1, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/0, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/1, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/2, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/3, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/4, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet3/5, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback1, changed state to up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%SYS-5-RESTART: System restarted --",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%SNMP-5-COLDSTART: SNMP agent on host R3 is undergoing a cold start",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on Ethernet3/1 from LOADING to FULL, Loading Done",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%OSPF-5-ADJCHG: Process 1, Nbr 4.4.4.4 on Ethernet3/3 from LOADING to FULL, Loading Done",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%BGP-5-ADJCHANGE: neighbor 1.1.1.1 Up",
+		time.Now().Format(time.StampMilli))
+	log.Debugf("* %s : %%BGP-5-ADJCHANGE: neighbor 4.4.4.4 Up",
+		time.Now().Format(time.StampMilli))
+}

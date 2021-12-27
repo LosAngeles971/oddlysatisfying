@@ -21,6 +21,7 @@ var vtp = map[int]uselessFunc{
 	7: stateLinux,
 	8: qradarAutoupdate,
 	9: vm370,
+	10: ciscoboot,
 }
 
 var clo = map[int]uselessFunc{
