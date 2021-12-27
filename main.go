@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
-  "math"
+  	"math"
 	"strconv"
 	"time"
 )
@@ -42,35 +42,37 @@ func find(slice []int, val int) (int, bool) {
 func main() {
 	args := os.Args[1:]
 	rand.Seed(time.Now().UnixNano())
-	var calls int
-  c := 0
+	calls := 0
+	var err error
 	if len(args) > 0 {
-		c, err := strconv.Atoi(args[0])
+		calls, err = strconv.Atoi(args[0])
 		if err != nil {
 			fmt.Print("ok, you tried to pass the number of how (randomly) many program execute...\n")
 			fmt.Printf("but what you type is not a number [%v]\n", args[0])
 			fmt.Printf("so you will have the default for now :)\n")
 		}
-  }
-  calls = rand.Intn(math.Max(c, len(vtp)))
+  	}
+  	calls = rand.Intn(int(math.Max(float64(calls), float64(len(vtp)))))
+	if calls == 0 {
+		calls = 1 + rand.Intn(len(vtp) - 1)
+	}
 	fmt.Printf("here we go!  [%v]\n\n\n\n\n", calls)
 	
-	// Create the list
-  myList := []int{}
+	// create execution list
+  	myList := []int{}
 	
-  for i := 0; i < calls; {
-    randomNumber := rand.Intn(len(vtp))
-    _, found := find(myList, randomNumber)
-    if !found {
-      myList = append(myList, randomNumber)
-      i++
-    }
-  }
+	for i := 0; i < calls; {
+		randomNumber := rand.Intn(len(vtp))
+		_, found := find(myList, randomNumber)
+		if !found {
+			myList = append(myList, randomNumber)
+			i++
+		}
+	}
 	for i := 0; i < len(myList); i++ {
 		call := vtp[myList[i]]
 		call()
 	}
-
 	call := clo[rand.Intn(len(clo))]
 	call()
 }
