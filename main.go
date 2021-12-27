@@ -52,7 +52,7 @@ func main() {
 			fmt.Printf("so you will have the default for now :)\n")
 		}
   	}
-  	calls = int(math.Max(float64(calls), float64(len(vtp))))
+  	calls = int(math.Min(float64(calls), float64(len(vtp))))
 	if calls == 0 {
 		calls = 1 + rand.Intn(len(vtp) - 1)
 	}
