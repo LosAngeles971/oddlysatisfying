@@ -1,12 +1,15 @@
 package main
 
 import (
+	"reflect"
 	"testing"
 )
 
-func TestMapOfFunc(t *testing.T) {
-	for _, call := range vtp {
-		t.Logf("testing logging function %v", call)
-		call()
+func TestMapOfFuncIntegrity(t *testing.T) {
+	for i, call := range vtp {
+		tt := reflect.TypeOf(call).Kind()
+		if tt != reflect.Func {
+			t.Logf("element %d of map is not a function but %v", i, tt)
+		}
 	}
 }
