@@ -47,12 +47,12 @@ func main() {
 	if len(args) > 0 {
 		calls, err = strconv.Atoi(args[0])
 		if err != nil {
-			fmt.Print("ok, you tried to pass the number of how (randomly) many program execute...\n")
+			fmt.Print("ok, you tried to pass the number of how many program execute...\n")
 			fmt.Printf("but what you type is not a number [%v]\n", args[0])
 			fmt.Printf("so you will have the default for now :)\n")
 		}
   	}
-  	calls = rand.Intn(int(math.Max(float64(calls), float64(len(vtp)))))
+  	calls = int(math.Max(float64(calls), float64(len(vtp))))
 	if calls == 0 {
 		calls = 1 + rand.Intn(len(vtp) - 1)
 	}
