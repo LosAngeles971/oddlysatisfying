@@ -93,3 +93,15 @@ func ciscoboot() {
 	log.Debugf("* %s : %%BGP-5-ADJCHANGE: neighbor 4.4.4.4 Up",
 		time.Now().Format(time.StampMilli))
 }
+
+func curlDownload() {
+    log := New()
+    program := getFilename()
+    url := getUrl()
+    size := rand.Intn(9999)
+    avgspeed := rand.Intn(9999)
+    log.Infof("\n\ncurl %s/download/%s", url, program)
+    log.Info("   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current")
+    log.Info("                                  Dload  Upload   Total   Spent    Left  Speed")
+    log.Infof(" 100 %4dk  100 %4dk    0     0  %4dk      0 --:--:-- --:--:-- --:--:-- %4dk\n\n",size,size,avgspeed,avgspeed+123)
+}
