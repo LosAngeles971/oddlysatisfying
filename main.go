@@ -1,15 +1,20 @@
 package main
 
 import (
-    "fmt"
-    "math"
-    "math/rand"
-    "os"
-    "strconv"
-    "time"
+	"fmt"
+	"math"
+	"math/rand"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
 )
 
-type uselessFunc func()
+const (
+    server_http_listener = ":8080"
+)
+
+type uselessFunc func() *Log
 
 var vtp = map[int]uselessFunc{
     0:  download,
@@ -31,8 +36,7 @@ var clo = map[int]uselessFunc{
     0: standard,
 }
 
-func main() {
-    args := os.Args[1:]
+func toScreen(args []string) {
     rand.Seed(time.Now().UnixNano())
     calls := rand.Intn(len(vtp))
     var err error
@@ -50,25 +54,27 @@ func main() {
         calls = 1
     }
     fmt.Printf("here we go!  [%v]\n\n\n\n\n", calls)
-
-    // create execution list
     myList := []int{}
-
     for i := 0; i < len(vtp); i++ {
         myList = append(myList, i)
     }
-
-    rand.Seed(time.Now().UnixNano())
     rand.Shuffle(len(myList), func(i, j int) { myList[i], myList[j] = myList[j], myList[i] })
-
     myList = myList[:calls]
-
     for i := 0; i < len(myList); i++ {
-    	call := vtp[myList[i]]
-    	call()
+        call := vtp[myList[i]]
+        log := call()
+        log.toScreen()
     }
-
-
     call := clo[rand.Intn(len(clo))]
     call()
+}
+
+func main() {
+    args := os.Args[1:]
+    if len(args) > 0 && args[0] == "server" {
+        r := newRouter()
+        http.ListenAndServe(server_http_listener, r)
+    } else {
+        toScreen(args)
+    }
 }

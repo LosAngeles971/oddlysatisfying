@@ -76,3 +76,8 @@ But you may ask for additional architecture and (maybe) you'll be satisfied.
 
 Enjoy!
 Peace and love, @LosAngeles971 (aka @Bluepulsar971).
+
+
+http://aleclownes.com/2017/02/01/crt-display.html
+https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh
+https://safi.me.uk/typewriterjs/
