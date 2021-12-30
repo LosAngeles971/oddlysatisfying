@@ -36,7 +36,7 @@ Anyway remember: even if you see attempts of downloading, recovery actions, boot
 ## The Web version
 
 The superb and useless _oddly satisfying_ program is available on Web too, the best for lazy and stressed people.
-Just point your browser to https://web.bluepulsar971.it/oddlysatisfying and enjoy.
+Just point your browser to https://web.bluepulsar971.it/oddlysatisfying/ and enjoy.
 
 Please keep in mind that the web server is just a Raspberry PI, so be nice, patient ane peaceful with him.
 
