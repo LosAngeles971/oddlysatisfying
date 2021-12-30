@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+
+/* usefull variables */
+:root {
+    --green-color: #5bf870;
+    --green-bg: #05321e;
+    --red-color: #c0100a;
+    --red-bg: #1b0302;
+    --blue-color: #a5a5ff;
+    --blue-bg: #4242e7;
+    --black: #050505;
+    --dark: #111;
+}
+
+html {
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ffffff;
+    margin: 0;
+    overflow: auto;
+    font-family: sans-serif;
+}
+
+/*************************************************************************************
+Note:
+The dot(.) and hash(#) both of them are used as a CSS selector. 
+Both selectors are used to select the content to set the style. 
+CSS selectors select HTML elements according to its id, class, type, attribute, etc.
+
+Id selector(“#”): The id selector selects the id attribute of an HTML element to select a specific element. 
+An id is always unique within the page so it is chosen to select a single, unique element. 
+It is written with the hash character (#), followed by the id of the element.
+
+Class Selector(“.”): The class selector selects HTML elements with a specific class attribute. 
+It is used with a period character “.” (full stop symbol) followed by the class name. 
+*************************************************************************************/
+
+/* Three classes for three possible themes **/
+.theme {
+    --color: var(--red-color);
+    --bg: var(--red-bg);
+}
+
+a {
+    color: rgb(0, 170, 0);
+    text-decoration: none;
+    outline: none;
+}
+
+.title {
+    padding-left: 5.5vmin;
+    padding-right: 5.5vmin;
+    position: relative;
+    font-family: 'Waterfall', cursive;
+    font-size: xx-large;
+}
+
+.section {
+    font-family: 'Source Serif 4', sans-serif;
+    font-size: medium;
+    padding-left: 3vmin;
+    padding-right: 1vmin;
+    margin: 2vmin auto;
+    position: relative;
+    word-break: break-word;
+    color: var(--blue-bg);
+}
+
+/* theme for the divion terminal, where the log is going to be typed */
+.terminal {
+    padding-left: 1vmin;
+    padding-right: 2vmin;
+    background: var(--bg);
+    font-family: "VT323", monospace;
+    font-size: large;
+    color: var(--green-color);
+    position: relative;
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-break: break-word;
+    animation: textShadow 4s infinite;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.footer {
+    padding-left: 3vmin;
+    padding-right: 3vmin;
+    position: relative;
+    font-family: 'Waterfall', cursive;
+    font-size: xx-large;
+}
