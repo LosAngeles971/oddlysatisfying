@@ -1,3 +1,6 @@
+/*
+This file provides fictional data for making logging functions more realistic and dynamic
+*/
 package main
 
 import (
@@ -252,22 +255,26 @@ var data = map[string]interface{}{
 	},
 }
 
+// getFilename returns a random filename
 func getFilename() string {
 	files := data["files"].([]string)
 	extensions := data["extensions"].([]string)
 	return fmt.Sprintf("%s%s", files[rand.Intn(len(files))], extensions[rand.Intn(len(extensions))])
 }
 
+// getDisk returns a random disk device name
 func getDisk() string {
 	disks := data["disks"].([]string)
 	return disks[rand.Intn(len(disks))]
 }
 
+// getFilesystem returns a random filesystem standard name
 func getFilesystem() string {
 	filesystems := data["filesystems"].([]string)
 	return filesystems[rand.Intn(len(filesystems))]
 }
 
+// getUrl returns a random URL
 func getUrl() string {
 	urls := data["urls"].([]string)
 	return urls[rand.Intn(len(urls))]
