@@ -8,6 +8,9 @@ func bootMsDos() *Log {
 	return log
 }
 
+// c64 returns the boot log of the superb Commodore 64,
+// plus the execution of the command to load data from the tape
+// The log fragment is the result of scraping from an image on Google
 func c64() *Log {
 	log := New()
 	log.add("    **** COMMODORE 64 BASIC X2 ****")

@@ -28,7 +28,7 @@ If you're lazy just run the _oddly satisfying_ program.
 Otherwise you may specify the number of logging operations you desire.
 
 ```sh
-./oddlysatisfying 10
+./oddlysatisfying --logs 10
 ```
 
 Anyway remember: even if you see attempts of downloading, recovery actions, boot of programs, **the superb _oddly satisfying_ program never really do something**, it is and it will be always completely useless and harmless.
@@ -49,7 +49,7 @@ mkdir oddlysatisfying
 cd oddlysatisfying
 # copy the binary here
 # copy the html directory here
-./oddlysatisfying server
+./oddlysatisfying --server
 ```
 
 ## How to contribute
@@ -99,8 +99,9 @@ Peace and love.
 
 @LosAngeles971 (aka @Bluepulsar971) - https://www.linkedin.com/in/bluepulsar971/
 
-## Credits and references
+## Credits, inspirational articles and references
 
-http://aleclownes.com/2017/02/01/crt-display.html
-https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh
-https://safi.me.uk/typewriterjs/
+* The Web edition use the Javascript https://safi.me.uk/typewriterjs/ to type logs into the page
+* The library https://github.com/jessevdk/go-flags is used to parse the command line flags
+
+* The articles http://aleclownes.com/2017/02/01/crt-display.html and https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh have been of inspiration to build the HTML resources

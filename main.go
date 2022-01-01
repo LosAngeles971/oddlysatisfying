@@ -2,17 +2,24 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"math/rand"
 	"net/http"
-	"os"
-	"strconv"
 	"time"
+
+	"github.com/jessevdk/go-flags"
 )
 
 const (
     server_http_listener = ":8080"
 )
+
+var opts struct {
+	Server bool `short:"s" long:"server" description:"Start in server mode"`
+    Port int `short:"p" long:"port" description:"Port used by server mode"`
+    Logs int `short:"l" long:"logs" description:"How many logs for CLI mode"`
+}
 
 type uselessFunc func() *Log
 
@@ -36,22 +43,11 @@ var clo = map[int]uselessFunc{
     0: standard,
 }
 
-func toScreen(args []string) {
+func toScreen(logs int) {
     rand.Seed(time.Now().UnixNano())
     calls := rand.Intn(len(vtp))
-    var err error
-    if len(args) > 0 {
-        calls = 0
-        calls, err = strconv.Atoi(args[0])
-        if err != nil {
-            fmt.Print("ok, you tried to pass the number of how many program execute...\n")
-            fmt.Printf("but what you type is not a number [%v]\n", args[0])
-            fmt.Printf("so you will have the default for now :)\n")
-        }
-    }
-    calls = int(math.Min(float64(calls), float64(len(vtp))))
-    if calls == 0 {
-        calls = 1
+    if logs > 0 {
+        calls = int(math.Min(float64(calls), float64(len(vtp))))
     }
     fmt.Printf("here we go!  [%v]\n\n\n\n\n", calls)
     myList := []int{}
@@ -70,11 +66,18 @@ func toScreen(args []string) {
 }
 
 func main() {
-    args := os.Args[1:]
-    if len(args) > 0 && args[0] == "server" {
+    _, err := flags.Parse(&opts)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if opts.Server {
         r := newRouter()
-        http.ListenAndServe(server_http_listener, r)
+        if opts.Port > 0 && opts.Port < 65536 {
+            http.ListenAndServe(fmt.Sprintf(":%v", opts.Port), r)
+        } else {
+            http.ListenAndServe(server_http_listener, r)
+        }
     } else {
-        toScreen(args)
+        toScreen(opts.Logs)
     }
 }
